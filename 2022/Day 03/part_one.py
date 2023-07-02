@@ -20,15 +20,16 @@ def get_character_score(char: str) -> int:
     return charset.find(char) + 1
 
 
-with open('rucksacks', 'r') as read_file:
-    lines: list[str] = read_file.readlines()
+if __name__ == '__main__':
+    with open('rucksacks', 'r') as read_file:
+        lines: list[str] = read_file.readlines()
 
-score: int = 0
-for line in lines:
-    halfway: int = len(line) // 2
-    first_half: str = line[:halfway]
-    second_half: str = line[halfway:]
-    duplicate_char: str = find_duplicate_char(first_half, second_half)
-    score += get_character_score(duplicate_char)
+    score: int = 0
+    for line in lines:
+        halfway: int = len(line) // 2
+        first_half: str = line[:halfway]
+        second_half: str = line[halfway:]
+        duplicate_char: str = find_duplicate_char(first_half, second_half)
+        score += get_character_score(duplicate_char)
 
-print(score)
+    print(score)
