@@ -1,10 +1,13 @@
 from string import ascii_lowercase, ascii_uppercase
 
 
-def find_duplicate_char(first_str: str, second_str: str) -> str:
-    for char in first_str:
-        if char in second_str:
-            return char
+def find_duplicate_char(*args: str) -> str:
+    args: list[str] = list(args)
+    first_string: str = args.pop(0)
+    for char in first_string:
+        for arg in args:
+            if char in arg:
+                return char
 
 
 def get_character_score(char: str) -> int:

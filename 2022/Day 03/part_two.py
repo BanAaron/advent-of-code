@@ -1,10 +1,4 @@
-from part_one import get_character_score
-
-
-def find_duplicate_char(first_str: str, second_str: str, third_str: str) -> str:
-    for char in first_str:
-        if char in second_str and char in third_str:
-            return char
+from part_one import get_character_score, find_duplicate_char
 
 
 if __name__ == '__main__':
@@ -16,7 +10,7 @@ if __name__ == '__main__':
     for x in range(0, len(lines), chunk_size):
         chunk: list[str] = lines[x:x + chunk_size]
         chunk = [c.removesuffix('\n') for c in chunk]
-        duplicate_char: str = find_duplicate_char(chunk[0], chunk[1], chunk[2])
+        duplicate_char: str = find_duplicate_char(*chunk)
         score += get_character_score(duplicate_char)
 
     print(score)
