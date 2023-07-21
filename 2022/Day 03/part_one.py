@@ -19,12 +19,12 @@ def get_character_score(char: str) -> int:
     """
     charset: str = ascii_lowercase + ascii_uppercase
     if len(char) != 1 or char not in charset:
-        raise ValueError(f'{char} is not a valid character.')
+        raise ValueError(f"{char} is not a valid character.")
     return charset.find(char) + 1
 
 
-if __name__ == '__main__':
-    with open('rucksacks', 'r') as read_file:
+if __name__ == "__main__":
+    with open("rucksacks", "r") as read_file:
         lines: list[str] = read_file.readlines()
 
     score: int = 0
