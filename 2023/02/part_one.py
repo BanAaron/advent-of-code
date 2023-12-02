@@ -29,6 +29,7 @@ if __name__ == '__main__':
             blue_matches = re.findall(blue_pattern, s)
             blues = sum([int(x) for x in blue_matches])
 
+            # would be more efficient to check each as we go, but I am lazy
             if reds > RED_MAX or greens > GREEN_MAX or blues > BLUE_MAX:
                 impossible = True
                 break
