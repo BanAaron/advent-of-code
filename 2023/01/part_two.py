@@ -1,23 +1,17 @@
 from part_one import clean
 
 numbers = {
-    "one": 1,
-    "two": 2,
-    "three": 3,
-    "four": 4,
-    "five": 5,
-    "six": 6,
-    "seven": 7,
-    "eight": 8,
-    "nine": 9,
+    "one": "one1one",
+    "two": "two2two",
+    "three": "three3three",
+    "four": "four4four",
+    "five": "five5five",
+    "six": "six6six",
+    "seven": "seven7seven",
+    "eight": "eight8eight",
+    "nine": "nine9nine",
 }
 
-# the problem with this one is that some numbers in string form can overlap
-# to create two different numbers. For example eightwothree == 823, but using
-# doing a replacement on the string values would remove the eight
-
-# probably the best solution is to use a sliding window to break up the string
-# into pieces
 if __name__ == "__main__":
     with open("data", "r") as file:
         data = [clean(x) for x in file.readlines()]
