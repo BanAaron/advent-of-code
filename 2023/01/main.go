@@ -18,7 +18,7 @@ func main() {
 	file, err := os.ReadFile("2023/01/data")
 	check(err)
 
-	number_map := map[string]string{
+	numberMap := map[string]string{
 		"one":   "one1one",
 		"two":   "two2two",
 		"three": "three3three",
@@ -37,7 +37,7 @@ func main() {
 	numbers := make([]uint64, l)
 
 	for _, str := range codes {
-		for k, v := range number_map {
+		for k, v := range numberMap {
 			str = strings.ReplaceAll(str, k, v)
 		}
 		temp := ""
