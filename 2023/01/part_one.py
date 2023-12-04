@@ -16,7 +16,7 @@ if __name__ == "__main__":
 
     res = []
     for r in strings:
-        number = str(r[0]) + str(r[len(r) - 1])
+        number = str(r[0]) + str(r[-1])
         res.append(int(number))
 
     print(sum(res))
