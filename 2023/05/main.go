@@ -9,40 +9,40 @@ import (
 	"unicode"
 )
 
-func main() {
-	file, err := os.Open("2023/05/data")
+func check(err error) {
 	if err != nil {
 		panic(err)
 	}
+}
+
+func main() {
+	file, err := os.Open("2023/05/data")
+	check(err)
 
 	defer func() {
 		err := file.Close()
-		if err != nil {
-			panic(err)
-		}
+		check(err)
 	}()
 
 	var seeds []int
 
 	scanner := bufio.NewScanner(file)
-	var maps [][][3]int
+	var almanac [][][3]int
 	var currentMap [][3]int
 
 	for scanner.Scan() {
 		line := scanner.Text()
 		if strings.Contains(line, "seeds") {
 			split := strings.Split(line, " ")[1:]
-			for _, s := range split {
-				s, err := strconv.Atoi(s)
-				if err != nil {
-					panic(err)
-				}
-				seeds = append(seeds, s)
+			for _, str := range split {
+				strAsInt, err := strconv.Atoi(str)
+				check(err)
+				seeds = append(seeds, strAsInt)
 			}
 		}
 
 		if strings.Contains(line, "map") {
-			maps = append(maps, currentMap)
+			almanac = append(almanac, currentMap)
 		}
 
 		var firstChar rune
@@ -54,21 +54,20 @@ func main() {
 			numbers := strings.Split(line, " ")
 			for i, n := range numbers {
 				n, err := strconv.Atoi(n)
-				if err != nil {
-					panic(err)
-				}
+				check(err)
 				store[i] = n
 			}
 			currentMap = append(currentMap, store)
 		}
 	}
-	maps = append(maps, currentMap)
+	almanac = append(almanac, currentMap)
 
 	err = scanner.Err()
-	if err != nil {
-		panic(err)
-	}
+	check(err)
 
-	maps = maps[1:]
-	fmt.Println(maps)
+	// remove first element
+	almanac = almanac[1:]
+
+	fmt.Printf("seeds: %v\n", seeds)
+	fmt.Printf("almanac: %v\n", almanac)
 }
