@@ -9,19 +9,19 @@ import (
 	"unicode"
 )
 
-func check(err error) {
+func checkError(err error) {
 	if err != nil {
 		panic(err)
 	}
 }
 
-func main() {
-	file, err := os.Open("2023/05/data")
-	check(err)
+func getAlmanacData(filename string) ([]int, [][][3]int) {
+	file, err := os.Open(filename)
+	checkError(err)
 
 	defer func() {
 		err := file.Close()
-		check(err)
+		checkError(err)
 	}()
 
 	var seeds []int
@@ -36,7 +36,7 @@ func main() {
 			split := strings.Split(line, " ")[1:]
 			for _, str := range split {
 				strAsInt, err := strconv.Atoi(str)
-				check(err)
+				checkError(err)
 				seeds = append(seeds, strAsInt)
 			}
 		}
@@ -54,7 +54,7 @@ func main() {
 			numbers := strings.Split(line, " ")
 			for i, n := range numbers {
 				n, err := strconv.Atoi(n)
-				check(err)
+				checkError(err)
 				store[i] = n
 			}
 			currentMap = append(currentMap, store)
@@ -63,10 +63,16 @@ func main() {
 	almanac = append(almanac, currentMap)
 
 	err = scanner.Err()
-	check(err)
+	checkError(err)
 
 	// remove first element
 	almanac = almanac[1:]
+
+	return seeds, almanac
+}
+
+func main() {
+	seeds, almanac := getAlmanacData("2023/05/data")
 
 	fmt.Printf("seeds: %v\n", seeds)
 	fmt.Printf("almanac: %v\n", almanac)
