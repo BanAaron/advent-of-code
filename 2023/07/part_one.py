@@ -4,17 +4,16 @@ from dataclasses import dataclass
 
 @dataclass
 class Hand:
-    def __init__(self, cards: str, score: int, hand_type: str):
-        self.cards = cards
-        self.score = score
-        self.hand_type = hand_type
+    cards: str
+    score: int
+    hand_type: str
 
     def __repr__(self):
         return f"{self.cards}, {self.score}, {self.hand_type}"
 
 
-card_types = ["A", "K", "Q", "J", "T", "9", "8", "7", "6", "5", "4", "3", "2"]
-hand_type_order = ["five", "four", "full", "three", "two", "one", "high"]
+CARD_TYPES = ["A", "K", "Q", "J", "T", "9", "8", "7", "6", "5", "4", "3", "2"]
+HAND_TYPE_ORDER = ["five", "four", "full", "three", "two", "one", "high"]
 
 
 def get_hand_type(hand_string: str) -> str:
@@ -39,7 +38,7 @@ def get_hand_type(hand_string: str) -> str:
 
 
 if __name__ == '__main__':
-    hands: [Hand] = []
+    hands: list[Hand] = []
 
     with open("data", "r") as file:
         data = [x.removesuffix("\n").split() for x in file.readlines()]
@@ -53,8 +52,8 @@ if __name__ == '__main__':
 
     def custom_sort(hand):
         return (
-            hand_type_order.index(hand.hand_type),
-            [card_types.index(card) for card in hand.cards],
+            HAND_TYPE_ORDER.index(hand.hand_type),
+            [CARD_TYPES.index(card) for card in hand.cards],
             hand.score
         )
 
@@ -66,4 +65,4 @@ if __name__ == '__main__':
         print(f"Rank {idx}: {hand}")
         score += idx * hand.score
 
-    print(score)
+    print(f"Total Score: {score}")
