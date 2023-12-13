@@ -15,10 +15,10 @@ def check_adjacent(matrix: list[list], x: int, y: int) -> list:
 
 
 def contains_symbol(lst: list) -> bool:
-    return any(character not in '.0123456789' for character in lst)
+    return any(character not in ".0123456789" for character in lst)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     with open("data", "r") as file:
         data = file.readlines()
         data = [x.replace("\n", "").strip() for x in data]

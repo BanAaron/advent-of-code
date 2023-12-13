@@ -37,7 +37,7 @@ def get_hand_type(hand_string: str) -> str:
         return "high"
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     hands: list[Hand] = []
 
     with open("data", "r") as file:
@@ -49,14 +49,12 @@ if __name__ == '__main__':
         hand_type = get_hand_type(hand)
         hands.append(Hand(hand, value, hand_type))
 
-
     def custom_sort(hand):
         return (
             HAND_TYPE_ORDER.index(hand.hand_type),
             [CARD_TYPES.index(card) for card in hand.cards],
-            hand.score
+            hand.score,
         )
-
 
     sorted_hands = sorted(hands, key=custom_sort, reverse=True)
 

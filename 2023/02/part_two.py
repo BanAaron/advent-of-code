@@ -1,7 +1,7 @@
 from re import findall
 
 # I gave in to the regex demon
-if __name__ == '__main__':
+if __name__ == "__main__":
     with open("data", "r") as file:
         data = file.readlines()
 
@@ -12,15 +12,15 @@ if __name__ == '__main__':
 
     for line in data:
         # red
-        pattern = r'(\d+)\s+red'
+        pattern = r"(\d+)\s+red"
         matches = findall(pattern, line)
         reds.append(max([int(x) for x in matches]))
         # green
-        pattern = r'(\d+)\s+green'
+        pattern = r"(\d+)\s+green"
         matches = findall(pattern, line)
         greens.append(max([int(x) for x in matches]))
         # blue
-        pattern = r'(\d+)\s+blue'
+        pattern = r"(\d+)\s+blue"
         matches = findall(pattern, line)
         blues.append(max([int(x) for x in matches]))
 

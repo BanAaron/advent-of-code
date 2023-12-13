@@ -1,5 +1,5 @@
 with open("data", "r") as file:
-    file = [l.removesuffix("\n") for l in file.readlines()]
+    file = [line.removesuffix("\n") for line in file.readlines()]
 
 pattern = file.pop(0)
 file.pop(0)
@@ -8,17 +8,17 @@ store: dict[str, tuple[str, str]] = {}
 
 for x in file:
     location = x.split()[0]
-    l = x.split(",")[0][-3:]
-    r = x.split(",")[1][-4:-1]
-    store[location] = (l, r)
+    left = x.split(",")[0][-3:]
+    right = x.split(",")[1][-4:-1]
+    store[location] = (left, right)
 
 steps = 0
 curr = "AAA"
 while curr != "ZZZ":
-    for dir in pattern:
-        if dir == "L":
+    for direction in pattern:
+        if direction == "L":
             curr = store[curr][0]
-        elif dir == "R":
+        elif direction == "R":
             curr = store[curr][1]
         steps += 1
 

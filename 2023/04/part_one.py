@@ -17,7 +17,7 @@ for card in cards:
         if n in winning_numbers:
             count += 1
 
-    score = floor(2 ** count)
+    score = floor(2**count)
     scores.append(score)
 
 print(sum(scores))

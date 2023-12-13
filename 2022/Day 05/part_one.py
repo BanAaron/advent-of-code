@@ -21,10 +21,7 @@ boxes: list[list[str]] = [
 
 
 def move_boxes(
-    amount_to_move: int,
-    source: int,
-    target: int,
-    stacks: list[list[str]]
+    amount_to_move: int, source: int, target: int, stacks: list[list[str]]
 ) -> list[list[str]]:
     """
     moves boxes between different stacks
@@ -49,6 +46,4 @@ if __name__ == "__main__":
         amount, fr, to = [int(x) for x in instruction]
         boxes = move_boxes(amount, fr, to, boxes)
 
-    print(
-        "".join([x.pop() for x in boxes])
-    )
+    print("".join([x.pop() for x in boxes]))

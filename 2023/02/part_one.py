@@ -2,7 +2,7 @@ import re
 
 # I hate everything about this
 # I gave in to the regex demon
-if __name__ == '__main__':
+if __name__ == "__main__":
     with open("data", "r") as file:
         data = file.readlines()
 
@@ -17,15 +17,15 @@ if __name__ == '__main__':
 
         impossible = False
         for s in line.split(";"):
-            red_pattern = r'(\d+)\s+red'
+            red_pattern = r"(\d+)\s+red"
             red_matches = re.findall(red_pattern, s)
             reds = sum([int(x) for x in red_matches])
 
-            green_pattern = r'(\d+)\s+green'
+            green_pattern = r"(\d+)\s+green"
             green_matches = re.findall(green_pattern, s)
             greens = sum([int(x) for x in green_matches])
 
-            blue_pattern = r'(\d+)\s+blue'
+            blue_pattern = r"(\d+)\s+blue"
             blue_matches = re.findall(blue_pattern, s)
             blues = sum([int(x) for x in blue_matches])
 
